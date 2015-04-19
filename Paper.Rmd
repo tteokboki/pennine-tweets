@@ -41,3 +41,33 @@ grid.raster(img)
 ```
 
 ## 4. Data
+
+Geocoded Twitter data forms the basis of this research. The Twitter data were collected between 2014- 06-03 and 2014-07-25 via the Twitter Streaming API, a service which provides limited access to the Twitter ‘stream’ (Lovelace et al., 2014). The full dataset consisted of 60,434 geocoded tweets which originated (i.e. were sent) from the region of the PWNT. Each row in the dataset represented a tweet and included the longitude and latitude of origin and the tweet’s text. Additional metadata included a date and time stamp, and the sender’s (tweeter’s) number of followers, following, and tweets sent. The dataset did not include a twitter username.
+
+A GPX file of the PWNT was obtained from the National Trails website (Walk Unlimited, 2014). A 5km spatial buffer was drawn in ArcMap (ESRI, 2011) to create the aforementioned trail corridor. A shapefile of ESS agreement boundaries for England were obtained from Natural England (Natural England, 2014c). These boundaries were spatially clipped to the PWNT corridor resulting in 1717 individual ESS agreements within the trail corridor, covering 74.09% of the land (Figure 2).
+
+```{r, echo=FALSE, fig.width=2, fig.height=4, fig.align="center", fig.cap="The PWNT Corridor and ESS agreement boundaries. © Natural England copyright. Contains Ordnance Survey data © Crown copyright and database right [2014]."}
+library(png)
+library(grid)
+img <- readPNG("/Users/tom/Pictures/allTweets.png")
+grid.raster(img)
+```
+
+## 5. Methodology
+
+Processing of the Twitter dataset was completed using the statistical package R version 3.1.2 (R Development Core Team, 2008). The Twitter data were spatially clipped to the PWNT trail corridor so that only tweets that originated from within the 5km PWNT corridor were included in further analysis. Regular expression terms were used to filter the tweets relevant to trail use, e.g. "Pennine Way" and "hike", plus some significant locations along the trail for example "Kinder Scout" and "Cheviots". In total 16 search terms were used. Further data ‘cleaning’ was performed to remove tweets such as broadcast traffic alerts and direct replies between Twitter users. This process resulted in 161 tweets for sentiment analysis.
+Sentiment Analysis was conducted using SentiStrength, a lexicon-based sentiment analysis tool developed specifically for short informal text (Thelwall et al., 2010; Thelwall et al., 2012) such as that found on Twitter. SentiStrength returns an integer for both the positive (+1 to +5) and negative (-1 to - 5) sentiment expressed within text. A value of 1 or -1 denotes an absence of positive or negative sentiment respectively. Overall sentiment is obtained by combining the two integers to determine sentiment polarity of the text: A combined score of 0 denotes neutral text.
+
+## 6. Selected findings
+
+Figure 3 provides a breakdown of the sentiment expressed in the twitter messages along the PWNT trail corridor. 47 tweets expressed positive sentiment, 22 negative sentiment and 102 expressed no sentiment (i.e. neutral). 10 tweets expressed both positive and negative sentiment. Overall tweet sentiment consisted 40 positive, 16 negative and 105 neutral.
+
+[Link to interactive map of trail user tweets](http://tom-wilson.info.s3-website-us-west-2.amazonaws.com/PennineTweets.html)
+
+## 7. Conclusions
+
+This research has demonstrated a process that can be used to filter relevant tweets and perform a sentiment analysis on short informal texts sent by trail users along the Pennine Way National Trail. With regard to the feasibility of assessing the effectiveness of ESS agreements the initial findings are limited, both in terms of the number of relevant tweets and the sentiment conveyed. Additional work is needed to collect additional data, perhaps over a longer period of time. A key finding is that a high percentage of neutral tweets contained a URL to an image and it could be that these images are intended to convey sentiment. Further research should therefore focus on developing methods to extract the sentiment, if any, conveyed in these images.
+
+## 8. References
+
+References will be added...
