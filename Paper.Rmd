@@ -3,7 +3,14 @@ title: "Can the sentiment expressed in trail users' tweets help to assess the ef
 author: Tom Wilson and Robin Lovelace
 output: pdf_document
 graphics: yes
+bibliography: references.bib
 ---
+
+```{r, include=FALSE}
+pkgs <- c("png", "grid")
+lapply(pkgs, library, character.only = T)
+```
+
 
 ## Summary
 This paper presents an exploratory analysis into the feasibility of using the sentiment expressed within trail users' Twitter messages to assess the effectiveness of Environmental Stewardship Scheme agreements in place along the Pennine Way National Trail, England.
@@ -13,7 +20,7 @@ GIS  |  big data  |  sentiment analysis  |  environmental stewardship  |  volunt
 
 ## 1. Introduction
 
-The Environmental Stewardship Scheme (ESS), an agri-environmental scheme, represents the most widespread approach to environmental management in England. ESS provides financial rewards to farmers and land managers in return for reductions in farming intensity and the adoption of measures to protect the surrounding environment. The success of early agri-environmental schemes was measured by levels of participation but more recently, and for the lifetime of ESS which was introduced during 2005 and 2006, the focus has shifted to analyse the environmental benefits provided under the scheme (Franks & Emery, 2013), for example with regard to landscape character (Natural England, 2014a), the enhancement of grassland, moorland and heath (Natural England, 2014b), bird populations (Davey et al., 2010), and the provision of ecocsystem services (Defra, 2009).
+The Environmental Stewardship Scheme (ESS), an agri-environmental scheme, represents the most widespread approach to environmental management in England. ESS provides financial rewards to farmers and land managers in return for reductions in farming intensity and the adoption of measures to protect the surrounding environment. The success of early agri-environmental schemes was measured by levels of participation but more recently, and for the lifetime of ESS which was introduced during 2005 and 2006, the focus has shifted to analyse the environmental benefits provided under the scheme (Franks & Emery, 2013), for example with regard to landscape character (Natural England, 2014a), the enhancement of grassland, moorland and heath (Natural England, 2014b), bird populations [@davey2010assessing], and the provision of ecocsystem services (Defra, 2009).
 
 England has 15 designated National Trails which pass through diverse landscapes and expanses of agricultural land, a substantial amount of which is managed under ESS. In 2012 approximately 12 million visits were made to England’s National Trails (Ramblers, 2012). Despite the interactions that trail users unwittingly have with land managed under ESS there is currently no method to specifically obtain their opinions concerning the effectiveness of ESS in preserving and protecting the environment. The opinions of trail users are in fact limited to broad, large-scale qualitative surveys of visitors to the countryside in general, such as the Monitor of Engagement with the Natural Environment (MENE) which examines the adult population’s engagement with the natural environment (Natural England, 2013). The National Trail User Surveys (The Countryside Agency, 2005; Natural England/Countryside Council for Wales, 2007) were discontinued in 2007.
 
@@ -21,7 +28,7 @@ This research aims to address this potential discontinuity of knowledge by explo
 
 ## 2. Related Research
 
-Currently the effectiveness of ESS is measured with regard to the delivery of ES objectives and environmental benefits, for example in the provision of ecocsystem services (Defra, 2009), the effects on landscape character (Natural England, 2014b), the ecological status of grassland, moor and heath (Natural England, 2014a), and the effects on bird populations (Davey et al., 2010). The Monitor of engagement with the Natural Environment (MENE) is a comprehensive nationwide survey which aims to measure the population’s engagement with the natural environment (Natural England, 2013). The MENE survey is a representative but broad approach, and is not specific to trail users.
+Currently the effectiveness of ESS is measured with regard to the delivery of ES objectives and environmental benefits, for example in the provision of ecocsystem services (Defra, 2009), the effects on landscape character (Natural England, 2014b), the ecological status of grassland, moor and heath (Natural England, 2014a), and the effects on bird populations [@davey2010assessing]. The Monitor of engagement with the Natural Environment (MENE) is a comprehensive nationwide survey which aims to measure the population’s engagement with the natural environment (Natural England, 2013). The MENE survey is a representative but broad approach, and is not specific to trail users.
 
 Sentiment Analysis (SA) is the process of extracting positive or negative opinions from text with the aim of analysing people's sentiment; this is seen as an important task, particularly since our opinions influence our behaviours, and this has led to a particular commercial interest (Liu, 2012). More recently however, the growth of the social web has led to an increased interest in SA of short informal text for the purposes of social research, to gain insights into specific events, and to study the affective dimension of the social web (Thelwall et al., 2012).
 
@@ -34,10 +41,8 @@ The focus of this research is the 431 km (268 mile) long Pennine Way National Tr
 
 
 ```{r, echo=FALSE, fig.width=2, fig.height=4, fig.align="center", fig.cap="Location of the Pennine Way National Trail, England."}
-library(png)
-library(grid)
-img <- readPNG("/Users/tom/Pictures/PennineWayEngland.png")
-grid.raster(img)
+# img <- readPNG("/Users/tom/Pictures/PennineWayEngland.png")
+# grid.raster(img)
 ```
 
 ## 4. Data
@@ -47,10 +52,8 @@ Geocoded Twitter data forms the basis of this research. The Twitter data were co
 A GPX file of the PWNT was obtained from the National Trails website (Walk Unlimited, 2014). A 5km spatial buffer was drawn in ArcMap (ESRI, 2011) to create the aforementioned trail corridor. A shapefile of ESS agreement boundaries for England were obtained from Natural England (Natural England, 2014c). These boundaries were spatially clipped to the PWNT corridor resulting in 1717 individual ESS agreements within the trail corridor, covering 74.09% of the land (Figure 2).
 
 ```{r, echo=FALSE, fig.width=2, fig.height=4, fig.align="center", fig.cap="The PWNT Corridor and ESS agreement boundaries. © Natural England copyright. Contains Ordnance Survey data © Crown copyright and database right [2014]."}
-library(png)
-library(grid)
-img <- readPNG("/Users/tom/Pictures/allTweets.png")
-grid.raster(img)
+# img <- readPNG("/Users/tom/Pictures/allTweets.png")
+# grid.raster(img)
 ```
 
 ## 5. Methodology
@@ -70,4 +73,3 @@ This research has demonstrated a process that can be used to filter relevant twe
 
 ## 8. References
 
-References will be added...
