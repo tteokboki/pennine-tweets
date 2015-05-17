@@ -8,7 +8,7 @@ bibliography: references.bib
 
 ```{r, include=FALSE}
 pkgs <- c("png", "grid")
-lapply(pkgs, library, character.only = T)
+lapply(pkgs, library)
 ```
 
 
@@ -20,7 +20,7 @@ GIS  |  big data  |  sentiment analysis  |  environmental stewardship  |  volunt
 
 ## 1. Introduction
 
-The Environmental Stewardship Scheme (ESS), an agri-environmental scheme, represents the most widespread approach to environmental management in England. ESS provides financial rewards to farmers and land managers in return for reductions in farming intensity and the adoption of measures to protect the surrounding environment. The success of early agri-environmental schemes was measured by levels of participation but more recently, and for the lifetime of ESS which was introduced during 2005 and 2006, the focus has shifted to analyse the environmental benefits provided under the scheme [@franks2013incentivising], for example with regard to landscape character [@ne2014alandcharacter], the enhancement of grassland, moorland and heath [@ne2014bgrassland], bird populations [@davey2010assessing], and the provision of ecocsystem services [@defra2009provision].
+The Environmental Stewardship Scheme (ESS), an agri-environmental scheme, represents the most widespread approach to environmental management in England. ESS provides financial rewards to farmers and land managers in return for reductions in farming intensity and the adoption of measures to protect the surrounding environment. The success of early agri-environmental schemes was measured by levels of participation but more recently, and for the lifetime of ESS which was introduced during 2005 and 2006, the focus has shifted to analyse the environmental benefits provided under the scheme [@franks2013incentivising], for example with regard to landscape character [@ne2014alandchar], the enhancement of grassland, moorland and heath [@ne2014bgrassland], bird populations [@davey2010assessing], and the provision of ecocsystem services [@defra2009provision].
 
 England has 15 designated National Trails which pass through diverse landscapes and expanses of agricultural land, a substantial amount of which is managed under ESS. In 2012 approximately 12 million visits were made to England’s National Trails [@ramb2012]. Despite the interactions that trail users unwittingly have with land managed under ESS there is currently no method to specifically obtain their opinions concerning the effectiveness of ESS in preserving and protecting the environment. The opinions of trail users are in fact limited to broad, large-scale qualitative surveys of visitors to the countryside in general, such as the Monitor of Engagement with the Natural Environment (MENE) which examines the adult population’s engagement with the natural environment [@ne2013mene]. The National Trail User Surveys [@cs2005res;@necs2007] were discontinued in 2007.
 
