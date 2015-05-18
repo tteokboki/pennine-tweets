@@ -11,14 +11,18 @@ author:
 abstract: |
   This paper presents an exploratory analysis into the feasibility of using the sentiment       expressed within trail users' Twitter messages to assess the effectiveness of Environmental Stewardship Scheme agreements in place along the Pennine Way National Trail, England.
 
-\keywords{Test}:
-\category{D.2}{Test}{Test}:
-\terms{test}:
-
 graphics: yes
+captions: yes
 bibliography: sigproc.bib
+template: sigproc-sp-4.tex
 output: rticles::acm
+      
 ---
+
+\documentclass{acm_proc_article-sp}:  
+\keywords{Test}
+\category{D.2}{Test}{Test}
+\terms{test}
 
 
 ```{r, include=FALSE}
