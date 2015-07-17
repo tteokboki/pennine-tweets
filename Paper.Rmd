@@ -1,14 +1,16 @@
 ---
-title: "Can the sentiment expressed in trail users' tweets help to assess the effectiveness of Environmental Stewardship Agreements? An exploratory analysis of the Pennine Way National Trail, England"
-author: Tom Wilson and Robin Lovelace
-output: pdf_document
+title: Can the sentiment expressed in trail users' tweets help to assess the effectiveness
+  of Environmental Stewardship Agreements? An exploratory analysis of the Pennine
+  Way National Trail, England
+author: "Tom Wilson and Robin Lovelace"
 graphics: yes
+output: word_document
 bibliography: references.bib
 ---
 
 ```{r, include=FALSE}
 pkgs <- c("png", "grid")
-lapply(pkgs, library)
+lapply(pkgs, library, character.only = T)
 ```
 
 
