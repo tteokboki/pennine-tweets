@@ -4,5 +4,5 @@
 *.pdf
 *.tex
 *.png
+*.csv
 Pennine Tweets - Filtered Processed Sentiment 20150507.xlsx
-.gitignore.R
