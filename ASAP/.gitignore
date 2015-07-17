@@ -1,0 +1,8 @@
+.Rproj.user
+.Rhistory
+.RData
+*.pdf
+*.tex
+*.png
+Pennine Tweets - Filtered Processed Sentiment 20150507.xlsx
+.gitignore.R
