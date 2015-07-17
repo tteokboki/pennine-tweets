@@ -1,0 +1,126 @@
+---
+title: "A method to extract the sentiment conveyed within trail users' tweets: A case study of the Pennine Way National Trail, England."
+author:
+  - name: Tom Wilson
+    email: gy10tlw@leeds.ac.uk
+    affiliation: School of Geography, University of Leeds
+  - name: Dr Robin Lovelace
+    email: r.lovelace@leeds.ac.uk
+    affiliation: School of Geography, University of Leeds
+
+abstract: |
+  The experiences and opinions of recreational trail users in England are currently limited to broad, large-scale qualatative surveys that measure general engagement with the countryside. There is not currently a method to efficiently measure the trail users' sentiment or experience.  As UK-based users of the micro-blogging service Twitter are becoming increasingly mobile and using the service from a range of locations, we present an exploratory analysis into the feasibility of using the sentiment conveyed in trail users' tweets as a measure of trail user opinion along the Pennine Way National Trail in England. Although the data used in this analysis did not provide conclusive results, a suitable method for sentiment extraction is proposed, and areas for additional research are identified.
+
+graphics: yes
+captions: yes
+bibliography: sigproc.bib
+template: sigproc-sp-4.tex
+output: rticles::acm
+---
+ 
+\keywords{GIS, Big Data, Sentiment Analysis, Volunteered Geographic Information}
+\category{H.2.8}{Database Applications}{Spatial Databases and GIS}
+\category{H.3.3}{Information Search and Retrieval}{Selection Process}
+\terms{Experimentation, Measurement}
+
+```{r, include=FALSE}
+pkgs <- c("png", "grid")
+lapply(pkgs, library, character.only = T)
+library(Rcpp)    		
+library(ggplot2)
+library(ggmap)
+library(maps)
+library(mapproj)
+library(rgeos)
+library(maptools)
+library(rgdal)
+geoT <- read.csv("geoT.csv", stringsAsFactors=FALSE)
+```
+
+# Introduction
+
+National Trails are designed to connect a country's finest landscapes and provide access to the countryside for recreation and an apprecation of the outdoors. In England there is a network of 15 National Trails, the first of which, the Pennine Way National Trail, was was opened in 1965. It is estimated that approximately 12 million people visited a National Trail in England in 2012 - which is greater than the collective visitation of several major London attractions (Ramblers, 2012). 
+
+Despite the levels of usage, and the interactions that trail users have with the surrounding countryside, there does not currently exist a cost-effective and effcient method of determining the sentiment and opinions of trail users specifically. In England, previously administered National Trail Users surveys have not been conducted since 2007. The opinions of trail users are now limited to representative large-scale, qualatative surveys such as the Monitor of Engagement with the Natural Environment (MENE). However, the MENE is broad in scope and examines the population's general interactions with the environment in which the definition of the countryside is "any green space - or whatever it actually is", and is therefore not specific to trail use, trail users, or the state of the trail. It is also expensive to conduct, costing about £400,000 each year.
+
+In this pilot study we investigate the novel use of social-web data as a source of trail user sentiment. Given that trails are linear features with which people interact with through movement, the source of our social-web data the micro-blogging service Twitter which is increasingly accessed by users on the move: In 2014 70% of UK Twitter users reported that they predominately accessed the service via a mobile device, and 80% of these users did so at a range of locations each day.
+
+This research specifically seeks to determine whether the sentiment conveyed within trail users' tweets can be used to determine the state of the trail. The contributions of this research to the SIG SPATIAL are:
+
+* To present a method to gather, select, and process Twitter data from trail users
+* To extract the sentiment from trail users' tweets
+* To present the findings of this pilot study
+* To propose a strategy for the refinement and application of this method on a larger scale.
+
+This is a pilot study with specific focus on the Pennine Way National Trail in England, the country's first National Trail which opened on April 25th 1965.
+
+# Background
+
+The micro-blogging service Twitter is increasingly accessed via mobile devices. In the UK in 2014 70% of Twitter users reported that a mobile device was the primary way in which they accessed Twitter, and of this majority 80% engaged with the service at a range of locations each day, making UK Twitter users the most mobile of all Europeans [https://blog.twitter.com/en-gb/2014/80-of-uk-users-access-twitter-via-their-mobile](https://blog.twitter.com/en-gb/2014/80-of-uk-users-access-twitter-via-their-mobile). Depending on a Twitter users' preferences their Twitter messages - tweets, may include Volunteered Geographic Information (VGI) which provides the user's location. This VGI is a consequence of user-contributed information, such as text or image, having geographic information attached. This geogrpahic information is commonly known as a geotag, and it provides a geographic footprint of the data (Stefandis et al 2013). Current estimates suggest that between 1% and 3% of tweets include a geotag (Morstatter et al., 2013; Broniatowski et al., 2013; Hecht and Stephens, 2014). The mobility of Twitter users, coupled with the embedded VGI, can present new insights into information flow and presents researchers with new and interesting perspectives from which to study phenomena (Stefanis et al. 2013) 
+
+ This research aims to address this potential discontinuity of knowledge by exploring the feasibility of extracting and utilising the sentiment conveyed in trail users’ Twitter messages (tweets) as a measure of the trail from a trail user perspective. This exploratory analysis will focus on the Pennine Way National Trail. This research is structured as follows: We propose a methodology to geographically and lexically filter relevant tweets that originate from the proximity of the trail, and then perform sentiment analysis to extract the sentiment expressed.
+
+# Related Research
+
+Currently the effectiveness of ESS is measured with regard to the delivery of ES objectives and environmental benefits, for example in the provision of ecocsystem services [@defra2009provision], the effects on landscape character [@ne2014alandchar], the ecological status of grassland, moor and heath [@ne2014bgrassland], and the effects on bird populations [@davey2010assessing]. The Monitor of engagement with the Natural Environment (MENE) is a comprehensive nationwide survey which aims to measure the population’s engagement with the natural environment [@ne2013mene]. The MENE survey is a representative but broad approach, and is not specific to trail users.
+
+Sentiment Analysis (SA) is the process of extracting positive or negative opinions from text with the aim of analysing people's sentiment; this is seen as an important task, particularly since our opinions influence our behaviours, and this has led to a particular commercial interest [@liu2012sentiment]. More recently however, the growth of the social web has led to an increased interest in SA of short informal text for the purposes of social research, to gain insights into specific events, and to study the affective dimension of the social web [@thel2012senti1].
+
+This research aims to address the potential shortfall of information regarding trails users’ opinions by conducting SA of short informal text sent via the micro-blogging service Twitter. Specifically we explore whether the sentiment expressed within the tweets of trail users can be used to assess the effectiveness of ES agreements in delivering environmental benefits.
+
+# Geographical Scope of Study
+
+The geographical focus of this research is the 431 km (268 mile) long Pennine Way National Trail (PWNT). The PWNT was England's first National Trail which officially opened on 24th April 1965 (Figure 1). The route of the PWNT carries it across the central upland spine between the English Midlands up to the Scottish Borders.
+
+The inspiration for the PWNT came from the Appalachian Trail in the eastern United States (Walk Unlimited, 2014). The PWNT paved the way for the development of additional Natioanl Trails in England, which are all designed to provide citizens with greater access to the countryside. Natioanl Trails also strive to provide rewarding and natural adventures, and the opportunity for people to be inspired by stunning and varied scenery, and landscapes (Wood-Geen, 2008).
+
+The National Trail system in England is administered by Natural England, an executive non-departmental body of the UK government. Natural England has developed a national framework of guidence, support, and funding for the Natural Trail system. At a local trail partnership manage and promote the trails. New uality standards have recently been introduced to ensure than National Trail routes are of the highest standard and connect England's finest landscapes. A specific quality standard is to ensue the conservation measures within the trail corridor contribute to the enhancment of the landscape (NE 2013a).
+
+For the purposes of this research the specific geographical scope of the studyy is set to within 5km of the PWNT which will hereafter referred to as the PWNT corridor.
+
+```{r, echo=FALSE, fig.width=2, fig.height=4, fig.align="center", fig.cap="Location of the Pennine Way National Trail, England."}
+#img <- readPNG("PennineWayEngland.png")
+#grid.raster(img)
+```
+
+# Data
+
+Geocoded Twitter data forms the basis of this research. The Twitter data were collected between 2014- 06-03 and 2014-07-25 via the Twitter Streaming API, a service which provides limited access to the Twitter ‘stream’ [@lovelace2014]. The full dataset consisted of 60,434 geocoded tweets which originated (i.e. were sent) from the region of the PWNT. Each row in the dataset represented a tweet and included the longitude and latitude of origin and the tweet’s text. Additional metadata included a date and time stamp, and the sender’s (tweeter’s) number of followers, following, and tweets sent. The dataset did not include a twitter username.
+
+A GPX file of the PWNT was obtained from the National Trails website [@walk2014pwnt]. A 5km spatial buffer was drawn in ArcMap [@arcmap10] to create the aforementioned trail corridor. A shapefile of ESS agreement boundaries for England were obtained from Natural England [@ne2014cshp]. These boundaries were spatially clipped to the PWNT corridor resulting in 1717 individual ESS agreements within the trail corridor, covering 74.09% of the land (Figure 2).
+
+
+```{r, eval=FALSE}
+trail <- readOGR("National_Trails_Pennine_Way.gpx", layer="routes")
+trail <- spTransform(trail, CRS("+init=epsg:27700"))
+plot(trail)
+trailBuf <- gBuffer(trail, width=5000)
+plot(trailBuf)
+trailBuf <- spTransform(trailBuf, CRS("+init=epsg:4326"))
+plot(trailBuf)
+View(geoT)
+pwtweets<-geoT
+coordinates(pwtweets)<-~Lon+Lat
+proj4string(pwtweets)<-CRS("+init=epsg:4326")
+pwtweets5km <- pwtweets[trailBuf, ]
+points(pwtweets5km, col="#3498db", cex=0.3)
+```
+
+
+# Methodology
+
+Processing of the Twitter dataset was completed using the statistical package R version 3.1.2 [@r2008r]. The Twitter data were spatially clipped to the PWNT trail corridor so that only tweets that originated from within the 5km PWNT corridor were included in further analysis. Regular expression terms were used to filter the tweets relevant to trail use, e.g. "Pennine Way" and "hike", plus some significant locations along the trail for example "Kinder Scout" and "Cheviots". In total 16 search terms were used. Further data ‘cleaning’ was performed to remove tweets such as broadcast traffic alerts and direct replies between Twitter users. This process resulted in 161 tweets for sentiment analysis.
+
+Sentiment Analysis was conducted using SentiStrength, a lexicon-based sentiment analysis tool developed specifically for short informal text [@the2010senti2;@thel2012senti1] such as that found on Twitter. SentiStrength returns an integer for both the positive (+1 to +5) and negative (-1 to - 5) sentiment expressed within text. A value of 1 or -1 denotes an absence of positive or negative sentiment respectively. Overall sentiment is obtained by combining the two integers to determine sentiment polarity of the text: A combined score of 0 denotes neutral text.
+
+# Selected findings
+
+Figure 3 provides a breakdown of the sentiment expressed in the twitter messages along the PWNT trail corridor. 47 tweets expressed positive sentiment, 22 negative sentiment and 102 expressed no sentiment (i.e. neutral). 10 tweets expressed both positive and negative sentiment. Overall tweet sentiment consisted 40 positive, 16 negative and 105 neutral.
+
+[Link to interactive map of trail user tweets](http://tom-wilson.info.s3-website-us-west-2.amazonaws.com/PennineTweets.html)
+
+# Conclusions
+
+This research has demonstrated a process that can be used to filter relevant tweets and perform a sentiment analysis on short informal texts sent by trail users along the Pennine Way National Trail. With regard to the feasibility of assessing the effectiveness of ESS agreements the initial findings are limited, both in terms of the number of relevant tweets and the sentiment conveyed. Additional work is needed to collect additional data, perhaps over a longer period of time. A key finding is that a high percentage of neutral tweets contained a URL to an image and it could be that these images are intended to convey sentiment. Further research should therefore focus on developing methods to extract the sentiment, if any, conveyed in these images.
+
+# References
