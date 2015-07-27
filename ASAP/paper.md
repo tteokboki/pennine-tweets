@@ -1,42 +1,18 @@
----
-title: Can the sentiment expressed in trail users' tweets help to assess the effectiveness
-  of Environmental Stewardship Agreements? An exploratory analysis of the Pennine
-  Way National Trail, England
-author: \textbullet Tom Wilson^1^ \textbullet Robin Lovelace^1^ \textbullet Andrew Evans^1^
-captions: yes
-output:
-  pdf_document: default
-  html_document:
-    keep_md: yes
-  word_document: default
-graphics: yes
-template: template.tex
-bibliography: references.bib
----
+# Can the sentiment expressed in trail users' tweets help to assess the effectiveness of Environmental Stewardship Agreements? An exploratory analysis of the Pennine Way National Trail, England
+Tom Wilson^1^ Robin Lovelace^1^ Andrew Evans^1^  
 
-```{r, include=FALSE}
-pkgs <- c("png", "grid")
-lapply(pkgs, library, character.only = T)
-```
 
-```{r, include=FALSE}
-pkgs <- c("png", "grid")
-lapply(pkgs, library, character.only = T)
-library(Rcpp)    		
-library(ggplot2)
-library(ggmap)
-library(maps)
-library(mapproj)
-library(rgeos)
-library(maptools)
-library(rgdal)
-geoT <- read.csv("geoT.csv", stringsAsFactors=FALSE)
-```
 
-## Abstract
+
+
+\begin{abstract}
+Insert your abstract here. Include keywords, PACS and mathematical
+subject classification numbers as needed.
+\keywords{First keyword \and Second keyword \and More}
+\end{abstract}
 
 ## Keywords
-\textbullet big data analysis  \textbullet sentiment analysis  \textbullet Environmental Stewardship Scheme \textbullet Volunteered Geographic Information
+\keywords{big data analysis  \and sentiment analysis  \and Environmental Stewardship Scheme \and Volunteered Geographic Information}
 
 ___
 
@@ -80,10 +56,7 @@ The focus of this research is the 431 km (268 mile) long Pennine Way National Tr
 
 
 
-```{r, echo=FALSE, fig.width=2, fig.height=4, fig.align="center", fig.cap="Location of the Pennine Way National Trail, England."}
-# img <- readPNG("/Users/tom/Pictures/PennineWayEngland.png")
-# grid.raster(img)
-```
+
 
 ## Data
 
@@ -94,10 +67,7 @@ Geocoded Twitter data forms the basis of this research. The Twitter data were co
 
 A GPX file of the PWNT was obtained from the National Trails website [@walk2014pwnt]. A 5km spatial buffer was drawn in ArcMap [@arcmap10] to create the aforementioned trail corridor. A shapefile of ESS agreement boundaries for England were obtained from Natural England [@ne2014cshp]. These boundaries were spatially clipped to the PWNT corridor resulting in 1717 individual ESS agreements within the trail corridor, covering 74.09% of the land (Figure 2).
 
-```{r, echo=FALSE, fig.width=2, fig.height=4, fig.align="center", fig.cap="The PWNT Corridor and ESS agreement boundaries. © Natural England copyright. Contains Ordnance Survey data © Crown copyright and database right [2014]."}
-# img <- readPNG("/Users/tom/Pictures/allTweets.png")
-# grid.raster(img)
-```
+
 
 ## Methods
 
