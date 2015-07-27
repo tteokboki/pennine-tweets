@@ -5,8 +5,6 @@
 
 
 
-
-
 ## Abstract
 
 ## Keywords
@@ -71,7 +69,6 @@ Through the following set of objectives:
 * Social web data (big data) - Do we need to provide background about this?
 
 
-
 ## Data
 
 * 60,434 geocoded tweets collected between 2014-06-03 and 2014-07-25
@@ -85,7 +82,6 @@ Through the following set of objectives:
     - clipped to 5km and 25km PWNT buffers
     - low resolution (90m) SRTM
 * PWNT trail counter data (provided by Natural England)
-
 
 
 ## Methods

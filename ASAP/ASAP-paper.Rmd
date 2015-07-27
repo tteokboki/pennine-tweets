@@ -5,11 +5,11 @@ title: Can the sentiment expressed in trail users' tweets help to assess the eff
 author: ' &#8226; Tom Wilson^1^   &#8226; Robin Lovelace^1^   &#8226; Andrew Evans^1^'
 captions: yes
 output:
-  word_document: default
   pdf_document:
     keep_tex: yes
   html_document:
     keep_md: yes
+  word_document: default
 graphics: yes
 template: template.tex
 bibliography: references.bib
@@ -32,11 +32,6 @@ library(rgeos)
 library(maptools)
 library(rgdal)
 geoT <- read.csv("geoT.csv", stringsAsFactors=FALSE)
-```
-
-```{r, include=FALSE, echo=FALSE, fig.width=0.1, fig.height=0.1, fig.env='envelopefigure'}
-img <- readPNG("envelope.png")
-grid.raster(img)
 ```
 
 ## Abstract
@@ -102,10 +97,6 @@ Through the following set of objectives:
     
 * Social web data (big data) - Do we need to provide background about this?
 
-```{r, echo=FALSE, fig.width=2, fig.height=4, fig.align="center", fig.cap="Location of the Pennine Way National Trail, England."}
-# img <- readPNG("/Users/tom/Pictures/PennineWayEngland.png")
-# grid.raster(img)
-```
 
 ## Data
 
@@ -121,10 +112,6 @@ Through the following set of objectives:
     - low resolution (90m) SRTM
 * PWNT trail counter data (provided by Natural England)
 
-```{r, echo=FALSE, fig.width=2, fig.height=4, fig.align="center", fig.cap="The PWNT Corridor and ESS agreement boundaries. © Natural England copyright. Contains Ordnance Survey data © Crown copyright and database right [2014]."}
-# img <- readPNG("/Users/tom/Pictures/allTweets.png")
-# grid.raster(img)
-```
 
 ## Methods
 
