@@ -1,10 +1,18 @@
 ---
+<<<<<<< HEAD
 title: "Can the sentiment expressed in trail users' tweets help to assess the effectiveness of Environmental Stewardship Agreements? An exploratory analysis of the Pennine Way National Trail, England"
 author: Tom Wilson and Robin Lovelace
 output: 
   pdf_document: 
     number_sections: yes
+=======
+title: Can the sentiment expressed in trail users' tweets help to assess the effectiveness
+  of Environmental Stewardship Agreements? An exploratory analysis of the Pennine
+  Way National Trail, England
+author: "Tom Wilson and Robin Lovelace"
+>>>>>>> upstream/master
 graphics: yes
+output: word_document
 bibliography: references.bib
 ---
 
@@ -25,18 +33,22 @@ GIS  |  big data  |  sentiment analysis  |  environmental stewardship  |  volunt
 
 # Introduction
 
+<<<<<<< HEAD
 The Environmental Stewardship Scheme (ESS), an agri-environmental scheme, .
 The ESS represents the most widespread approach to environmental management in England. ESS provides financial rewards to farmers and land managers in return for reductions in farming intensity and the adoption of measures to protect the surrounding environment. The success of early agri-environmental schemes was measured by levels of participation but more recently, and for the lifetime of ESS which was introduced during 2005 and 2006, the focus has shifted to analyse the environmental benefits provided under the scheme (Franks & Emery, 2013), for example with regard to landscape character (Natural England, 2014a), the enhancement of grassland, moorland and heath (Natural England, 2014b), bird populations [@davey2010assessing], and the provision of ecocsystem services (Defra, 2009).
+=======
+The Environmental Stewardship Scheme (ESS), an agri-environmental scheme, represents the most widespread approach to environmental management in England. ESS provides financial rewards to farmers and land managers in return for reductions in farming intensity and the adoption of measures to protect the surrounding environment. The success of early agri-environmental schemes was measured by levels of participation but more recently, and for the lifetime of ESS which was introduced during 2005 and 2006, the focus has shifted to analyse the environmental benefits provided under the scheme [@franks2013incentivising], for example with regard to landscape character [@ne2014alandchar], the enhancement of grassland, moorland and heath [@ne2014bgrassland], bird populations [@davey2010assessing], and the provision of ecocsystem services [@defra2009provision].
+>>>>>>> upstream/master
 
-England has 15 designated National Trails which pass through diverse landscapes and expanses of agricultural land, a substantial amount of which is managed under ESS. In 2012 approximately 12 million visits were made to England’s National Trails (Ramblers, 2012). Despite the interactions that trail users unwittingly have with land managed under ESS there is currently no method to specifically obtain their opinions concerning the effectiveness of ESS in preserving and protecting the environment. The opinions of trail users are in fact limited to broad, large-scale qualitative surveys of visitors to the countryside in general, such as the Monitor of Engagement with the Natural Environment (MENE) which examines the adult population’s engagement with the natural environment (Natural England, 2013). The National Trail User Surveys (The Countryside Agency, 2005; Natural England/Countryside Council for Wales, 2007) were discontinued in 2007.
+England has 15 designated National Trails which pass through diverse landscapes and expanses of agricultural land, a substantial amount of which is managed under ESS. In 2012 approximately 12 million visits were made to England’s National Trails [@ramb2012]. Despite the interactions that trail users unwittingly have with land managed under ESS there is currently no method to specifically obtain their opinions concerning the effectiveness of ESS in preserving and protecting the environment. The opinions of trail users are in fact limited to broad, large-scale qualitative surveys of visitors to the countryside in general, such as the Monitor of Engagement with the Natural Environment (MENE) which examines the adult population’s engagement with the natural environment [@ne2013mene]. The National Trail User Surveys [@cs2005res;@necs2007] were discontinued in 2007.
 
 This research aims to address this potential discontinuity of knowledge by exploring the feasibility of utilising the sentiment conveyed in trail users’ Twitter messages (tweets) to assess the effectiveness of ESS specifically from the trail user perspective. This exploratory analysis will focus on the Pennine Way National Trail. We propose a methodology to geographically and lexically filter relevant tweets that originate from the proximity of the trail, and then perform sentiment analysis to extract the sentiment expressed. Finally we will determine whether this information can be used to assess the effectiveness of ESS.
 
 # 2. Related Research
 
-Currently the effectiveness of ESS is measured with regard to the delivery of ES objectives and environmental benefits, for example in the provision of ecocsystem services (Defra, 2009), the effects on landscape character (Natural England, 2014b), the ecological status of grassland, moor and heath (Natural England, 2014a), and the effects on bird populations [@davey2010assessing]. The Monitor of engagement with the Natural Environment (MENE) is a comprehensive nationwide survey which aims to measure the population’s engagement with the natural environment (Natural England, 2013). The MENE survey is a representative but broad approach, and is not specific to trail users.
+Currently the effectiveness of ESS is measured with regard to the delivery of ES objectives and environmental benefits, for example in the provision of ecocsystem services [@defra2009provision], the effects on landscape character [@ne2014alandchar], the ecological status of grassland, moor and heath [@ne2014bgrassland], and the effects on bird populations [@davey2010assessing]. The Monitor of engagement with the Natural Environment (MENE) is a comprehensive nationwide survey which aims to measure the population’s engagement with the natural environment [@ne2013mene]. The MENE survey is a representative but broad approach, and is not specific to trail users.
 
-Sentiment Analysis (SA) is the process of extracting positive or negative opinions from text with the aim of analysing people's sentiment; this is seen as an important task, particularly since our opinions influence our behaviours, and this has led to a particular commercial interest (Liu, 2012). More recently however, the growth of the social web has led to an increased interest in SA of short informal text for the purposes of social research, to gain insights into specific events, and to study the affective dimension of the social web (Thelwall et al., 2012).
+Sentiment Analysis (SA) is the process of extracting positive or negative opinions from text with the aim of analysing people's sentiment; this is seen as an important task, particularly since our opinions influence our behaviours, and this has led to a particular commercial interest [@liu2012sentiment]. More recently however, the growth of the social web has led to an increased interest in SA of short informal text for the purposes of social research, to gain insights into specific events, and to study the affective dimension of the social web [@thel2012senti1].
 
 This research aims to address the potential shortfall of information regarding trails users’ opinions by conducting SA of short informal text sent via the micro-blogging service Twitter. Specifically we explore whether the sentiment expressed within the tweets of trail users can be used to assess the effectiveness of ES agreements in delivering environmental benefits.
 
@@ -53,9 +65,9 @@ The focus of this research is the 431 km (268 mile) long Pennine Way National Tr
 
 # 4. Data
 
-Geocoded Twitter data forms the basis of this research. The Twitter data were collected between 2014- 06-03 and 2014-07-25 via the Twitter Streaming API, a service which provides limited access to the Twitter ‘stream’ (Lovelace et al., 2014). The full dataset consisted of 60,434 geocoded tweets which originated (i.e. were sent) from the region of the PWNT. Each row in the dataset represented a tweet and included the longitude and latitude of origin and the tweet’s text. Additional metadata included a date and time stamp, and the sender’s (tweeter’s) number of followers, following, and tweets sent. The dataset did not include a twitter username.
+Geocoded Twitter data forms the basis of this research. The Twitter data were collected between 2014- 06-03 and 2014-07-25 via the Twitter Streaming API, a service which provides limited access to the Twitter ‘stream’ [@lovelace2014]. The full dataset consisted of 60,434 geocoded tweets which originated (i.e. were sent) from the region of the PWNT. Each row in the dataset represented a tweet and included the longitude and latitude of origin and the tweet’s text. Additional metadata included a date and time stamp, and the sender’s (tweeter’s) number of followers, following, and tweets sent. The dataset did not include a twitter username.
 
-A GPX file of the PWNT was obtained from the National Trails website (Walk Unlimited, 2014). A 5km spatial buffer was drawn in ArcMap (ESRI, 2011) to create the aforementioned trail corridor. A shapefile of ESS agreement boundaries for England were obtained from Natural England (Natural England, 2014c). These boundaries were spatially clipped to the PWNT corridor resulting in 1717 individual ESS agreements within the trail corridor, covering 74.09% of the land (Figure 2).
+A GPX file of the PWNT was obtained from the National Trails website [@walk2014pwnt]. A 5km spatial buffer was drawn in ArcMap [@arcmap10] to create the aforementioned trail corridor. A shapefile of ESS agreement boundaries for England were obtained from Natural England [@ne2014cshp]. These boundaries were spatially clipped to the PWNT corridor resulting in 1717 individual ESS agreements within the trail corridor, covering 74.09% of the land (Figure 2).
 
 ```{r, echo=FALSE, fig.width=2, fig.height=4, fig.align="center", fig.cap="The PWNT Corridor and ESS agreement boundaries. © Natural England copyright. Contains Ordnance Survey data © Crown copyright and database right [2014]."}
 # img <- readPNG("/Users/tom/Pictures/allTweets.png")
@@ -64,8 +76,9 @@ A GPX file of the PWNT was obtained from the National Trails website (Walk Unlim
 
 # Methodology
 
-Processing of the Twitter dataset was completed using the statistical package R version 3.1.2 (R Development Core Team, 2008). The Twitter data were spatially clipped to the PWNT trail corridor so that only tweets that originated from within the 5km PWNT corridor were included in further analysis. Regular expression terms were used to filter the tweets relevant to trail use, e.g. "Pennine Way" and "hike", plus some significant locations along the trail for example "Kinder Scout" and "Cheviots". In total 16 search terms were used. Further data ‘cleaning’ was performed to remove tweets such as broadcast traffic alerts and direct replies between Twitter users. This process resulted in 161 tweets for sentiment analysis.
-Sentiment Analysis was conducted using SentiStrength, a lexicon-based sentiment analysis tool developed specifically for short informal text (Thelwall et al., 2010; Thelwall et al., 2012) such as that found on Twitter. SentiStrength returns an integer for both the positive (+1 to +5) and negative (-1 to - 5) sentiment expressed within text. A value of 1 or -1 denotes an absence of positive or negative sentiment respectively. Overall sentiment is obtained by combining the two integers to determine sentiment polarity of the text: A combined score of 0 denotes neutral text.
+Processing of the Twitter dataset was completed using the statistical package R version 3.1.2 [@r2008r]. The Twitter data were spatially clipped to the PWNT trail corridor so that only tweets that originated from within the 5km PWNT corridor were included in further analysis. Regular expression terms were used to filter the tweets relevant to trail use, e.g. "Pennine Way" and "hike", plus some significant locations along the trail for example "Kinder Scout" and "Cheviots". In total 16 search terms were used. Further data ‘cleaning’ was performed to remove tweets such as broadcast traffic alerts and direct replies between Twitter users. This process resulted in 161 tweets for sentiment analysis.
+
+Sentiment Analysis was conducted using SentiStrength, a lexicon-based sentiment analysis tool developed specifically for short informal text [@the2010senti2;@thel2012senti1] such as that found on Twitter. SentiStrength returns an integer for both the positive (+1 to +5) and negative (-1 to - 5) sentiment expressed within text. A value of 1 or -1 denotes an absence of positive or negative sentiment respectively. Overall sentiment is obtained by combining the two integers to determine sentiment polarity of the text: A combined score of 0 denotes neutral text.
 
 # Selected findings
 
