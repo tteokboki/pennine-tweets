@@ -34,24 +34,30 @@ library(rgdal)
 geoT <- read.csv("geoT.csv", stringsAsFactors=FALSE)
 ```
 
-## Abstract
+# Abstract
 
-## Keywords
+Keywords
 &#8226; big data analysis &#8226; sentiment analysis &#8226; Environmental Stewardship Scheme &#8226; Volunteered Geographic Information
 
 ___
 
-Tom Wilson (![](envelope.png)) gy10tlw@leeds.ac.uk
+Tom Wilson: [gy10tlw@leeds.ac.uk](mailto:gy10tlw@leeds.ac.uk)
 
 ^1^ School of Geography, University of Leeds, Leeds, United Kingdom
 
 
-## Introduction
+# Introduction
 
 * Agri-environmental schemes
     - Environmental Stewardship Scheme
 * Natural England and their role in manage both ESS and National Trails
 * Study area
+
+The UK's Environmental Stewardship Scheme (ESS)
+is one of the the most widespread approaches
+to environmental management of farmland
+in England [@franks2013incentivising].
+ESS provides financial rewards to farmers and land managers in return for reductions in farming intensity and the adoption of measures to protect the surrounding environment. The success of early agri-environmental schemes was measured by levels of participation but more recently, and for the lifetime of ESS which was introduced during 2005 and 2006, the focus has shifted to analyse the environmental benefits provided under the scheme [@franks2013incentivising], for example with regard to landscape character [@ne2014alandchar], the enhancement of grassland, moorland and heath [@ne2014bgrassland], bird populations [@davey2010assessing], and the provision of ecocsystem services [@defra2009provision].
 
 The focus of this research is the 431 km (268 mile) long Pennine Way National Trail (PWNT), the oldest of England’s 15 National Trails which officially opened on 24th April 1965 (Figure 1). Along its route the PWNT crosses agricultural land managed under ESS. For this analysis a 5km spatial buffer was drawn around the PWNT which will hereafter referred to as the PWNT corridor.
 
@@ -65,7 +71,7 @@ Through the following set of objectives:
 * cspatial analyses of tweet locations and tweet viewshed, to explore patterns that may exist.
 * analysis of the finding and presentation of reccomendations to Natural England.
 
-## Background
+# Background
 
 * Environmental Stewardship Scheme
     - what it is (larggest agri-environmental scheme in England). Broad and shallow approach. 5 main objectives:
@@ -98,7 +104,7 @@ Through the following set of objectives:
 * Social web data (big data) - Do we need to provide background about this?
 
 
-## Data
+# Data
 
 * 60,434 geocoded tweets collected between 2014-06-03 and 2014-07-25
 * GPX file of the route of the Pennine Way National Trail (PWNT) [@walk2014pwnt]
@@ -113,7 +119,7 @@ Through the following set of objectives:
 * PWNT trail counter data (provided by Natural England)
 
 
-## Methods
+# Methods
 
 * Spatial selection
     - in R the Twitter dataset was reduced to only the tweets which originated from within the PWNT 5km corridor
@@ -130,7 +136,7 @@ tweet. Viewshed analyses were conducted in ArcMap 10 (ESRI, 2011) and included:
     - Determination of the ruggedness within the viewshed
     - Determination of the presence of ESS agreements within the viewshed.
 
-## Results
+# Results
 
 * The sentiment expressed in the twitter messages along the PWNT trail corridor:
     - 47 tweets expressed positive sentiment, 
@@ -143,10 +149,11 @@ tweet. Viewshed analyses were conducted in ArcMap 10 (ESRI, 2011) and included:
     - [Link to interactive map of trail user tweets](http://tom-wilson.info.s3-website-us-west-2.amazonaws.com/PennineTweets.html)
     - 
 
-## Discussion and Reccomnedations
+# Discussion and Reccomnedations
 
 * limitations
     - issues with social web data
+    - lack of tweets
         - limitations of twitter API - opacity, accessibility, representation and digital divide, ethics
     - mobile phone coverage on remote National Trails
     
@@ -154,7 +161,7 @@ tweet. Viewshed analyses were conducted in ArcMap 10 (ESRI, 2011) and included:
     - social campaign
     - explore image-sharing and the sentiment of images
 
-## Conclusions
+# Conclusions
 
-## References
+# References
 
