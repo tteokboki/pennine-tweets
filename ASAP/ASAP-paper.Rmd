@@ -5,12 +5,12 @@ title: Assesment of Environmental Stewardship Scheme agreements using the sentim
 author: ' &#8226; Tom Wilson^1^   &#8226; Robin Lovelace^1^   &#8226; Andrew Evans^1^'
 captions: yes
 output:
+  word_document: default
   pdf_document:
     keep_tex: yes
+  reference_docx: template.docx
   html_document:
     keep_md: yes
-  reference_docx: template.docx
-  word_document: null
 graphics: yes
 fontsize: 10pt
 template: template.tex
