@@ -5,5 +5,8 @@
 *.tex
 *.png
 *.csv
-*.
+*.R
+*.Rmd
+*.gpx
+*.bib
 Pennine Tweets - Filtered Processed Sentiment 20150507.xlsx
