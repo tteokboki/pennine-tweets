@@ -7,3 +7,17 @@
 *.csv
 *.png
 Pennine Tweets - Filtered Processed Sentiment 20150507.xlsx
+
+```{r, include=FALSE}
+pkgs <- c("png", "grid")
+lapply(pkgs, library, character.only = T)
+library(Rcpp)      	
+library(ggplot2)
+library(ggmap)
+library(maps)
+library(mapproj)
+library(rgeos)
+library(maptools)
+library(rgdal)
+geoT <- read.csv("geoT.csv", stringsAsFactors=FALSE)
+```
