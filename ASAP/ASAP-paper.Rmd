@@ -41,20 +41,17 @@ Tom Wilson: [gy10tlw@leeds.ac.uk](mailto:gy10tlw@leeds.ac.uk)
 
 ^1^ School of Geography, University of Leeds, Leeds, United Kingdom
 
-In 2012 approximately 12 million visits were made to England’s National Trails (Ramblers, 2012). ESS agreements in place within a National Trail corridor therefore play an important role in providing a positive experience and, as previously identified, one of the primary objectives of ESS is the maintenance and enhancement of landscape quality and character.
+In 2012 approximately 12 million visits were made to England’s National Trails (Ramblers, 2012). ESS agreements in place within a National Trail corridor therefore play an important role in providing a positive experience and, as previously identified, the maintenence and enhancement of landscape quality and character is one of the primary objectives of ESS.
 
-The geographic focus of this research is The Pennine Way National Trail (PWNT). The PWNT travels 431 km (268 miles) along the central upland spine of England, connecting Derbyshire, in the English Midlands to the Scottish Borders (Walk Unlimited, 2014; Long Distance Walkers Association, 2014). The PWNT opened on 24th April 1965 after a convoluted 30 year campaign to provide greater access to the English countryside (Long Distance Walkers Association, 2014) and this movement led to the development of the National Trail system. Along its route the PWNT passes through expanses of land managed under the ESS: 74.08% of the land within 5km of the PWNT has an ESS agreement in place. Based upon trail-counter data collected between 2004 and 2014, average annual visitors to the PWNT are calculated to be approximately 300,000 (Natural England, 2014f). 
+Despite the abundant interactions that National Trail users have with England’s landscapes, and inherently with land managed under ESS, there is currently no method to specifically obtain their opinions regarding the effectiveness of ESS in the maintenance and enhancement of the landscape quality and character. The opinions of trail users are in fact limited to broad, large-scale qualitative surveys of general visits to the countryside, such as the Monitor of Engagement with the Natural Environment (MENE). The MENE examines the adult population’s engagement with the natural environment (Natural England, 2015a). Previous National Trail User Surveys (The Countryside Agency, 2005; Natural England/Countryside Council for Wales, 2007) have not been conducted since 2007.
 
-Natural England, an executive non-departmental public body of the UK Government, is responsible for management of both ESS and the National Trail system. In both roles Natural England has developed a national framework of guidance, support, and funding. New quality standards have recently been introduced to ensure that the National Trail routes are of the highest standard and connect England’s finest landscapes. Specifically, Natural England identifies enhancement of the landscape, natural, and historic features within the trail corridor as a quality standard of the National Trail system (Natural England, 2013a).
+This research seeks to address this discontinuity in knowledge by exploring the feasibility of utilising the sentiment conveyed within trail users’ public Twitter messages (tweets) to assess the effectiveness of ESS agreements in place within the trail corridor. Currently, the effectiveness of ESS tends to be measured in terms of the delivery of environmental benefits and the overall nationwide penetration of the scheme. We aim to devise a process to extract the sentiment conveyed within trail users’ tweets and perform an exploratory analysis to determine whether this information can be used to assess ESS. The findings of this exploratory analysis will form the basis of recommendations to Natural England regarding the feasibility of utilising social media data as a method of eliciting trail users’ opinions of ESS and the National Trail System. The objectives of this research are to:
 
-Despite the abundant interactions that National Trail users have with England’s landscapes, and inherently with land managed under ESS, there is currently no method to specifically obtain their opinions concerning the effectiveness of ESS in the maintenance and enhancement of the landscape quality and character. The opinions of trail users are in fact limited to broad, large-scale qualitative surveys of general visits to the countryside, such as the Monitor of Engagement with the Natural Environment (MENE). The MENE examines the adult population’s engagement with the natural environment (Natural England, 2015a). Previous National Trail User Surveys (The Countryside Agency, 2005; Natural England/Countryside Council for Wales, 2007) have not been conducted since 2007.
+*  Develop a process to select tweets that are relavent to the scope of this study from a larger Twitter dataset, and extraction of the sentiment conveyed;
+*  Conduct spatial analyses of the geographic origins of the tweets, and their viewsheds, to identify patterns in the data;
+*  Provide policy recommendations regarding the feasibility of using social media data as a source or trail user feedback.
 
-This research seeks to address this discontinuity in knowledge by exploring the feasibility of utilising the sentiment conveyed within trail users’ public Twitter messages (tweets) to assess the effectiveness of ESS agreements in place within the trail corridor. Currently, the effectiveness of ESS, a key objective of which is the maintenance and enhancement of landscape quality and character, tends to be measured in terms of the delivery of environmental benefits and the overall nationwide penetration of the scheme. This research aims to devise a process to extract the sentiment conveyed within trail users’ tweets and perform an exploratory analysis to determine whether this information can be used in the assessment of ESS. The findings of the exploratory analysis will form the basis of recommendations to Natural England regarding the feasibility of pursuing a social media campaign as a method of eliciting trail users’ opinions of the Environmental Stewardship Scheme and National Trail System.
-The objectives of this research are:
-
-*  to develop a process to select tweets that are relavent to the scope of this study from a larger Twitter dataset, and extraction of the sentiment conveyed;
-*  to conduct spatial analyses of the geographic origins of the tweets, and their viewsheds, to identify patterns in the data;
-*  to provide policy recommendations to Natural England regarding the feasibility of using social media data as a source or trail user feedback, with a particular focus on the assessment of ESS.
+This pilot study will focus on a specific National Trail, The Pennine Way National Trail (PWNT). The PWNT travels 431 km (268 miles) along the central upland spine of England connecting the English Midlands to the Scottish Borders (Walk Unlimited, 2014; Long Distance Walkers Association, 2014). The PWNT opened on 24th April 1965 after a 30 year campaign to provide greater access to the English countryside (Long Distance Walkers Association, 2014) and was the first step toward the development of the National Trail system. Along its route the PWNT passes through expanses of land managed under the ESS: 74.08% of the land within 5km of the PWNT is managed under ESS. Based upon trail-counter data collected between 2004 and 2014, an average of approximately 300,000 people visit the PWNT annually (Natural England, 2014f).
   
 # Background
 
@@ -128,45 +125,104 @@ SentiStrength has been tested on diverse social web data sets and applied to stu
 
 # Data and Methods
 
+
 ## Data
+This pilot study utilised a variety of datasets in order to select trail users’ tweets, determine the sentiment of trail users’ tweets, and perform viewshed analyses of the tweet origins. Specifically, we used the following datasets:
 
 ### The Pennine Way National Trail
 A GPX file of the route of the Pennine Way National Trail (Walk Unlimited, 2014) was plotted using R (R Development Core Team, 2008), and both 5km and 25km buffers were generated. The 5km buffer represents the geographical scope of the project and is hereafter referred to as the PWNT corridor. The 25km buffer was used in later viewshed analyses. Figure 3 illustrates the geographic scope of these buffers.
 
-### Environmental Stewardship Scheme Agreements
-A shapefile of ESS agreement boundaries was obtained from the Environment Agency Geostore (Natural England, 2014e), a total of 48,285 ESS agreements. Non-spatial data for each individual agreement included the level of the agreement (e.g. ELS, HLS), and supplementary information such as details about the farm, the duration of the agreement, etc. The ESS shapefile was spatially clipped to only include the ESS agreements that were completely or partly within 5km and 25km PWNT corridors. Table 1 provides a breakdown of the types of ESS agreements in place, and the prevalence of ESS in both the 5km and 25km PWNT corridors. Figure 3 illustrates the spatial distribution of ESS agreements within the PWNT corridors.
+### Environmental Stewardship Scheme Agreements. 
+A shapefile of the ESS agreement boundaries in England (Natural England, 2014e) was clipped to the extent of the 25km and 5km PWNT corridors. Non-spatial data for each individual agreement included the level of the agreement (e.g. ELS, HLS), and details about the farm, the duration of the agreement, etc. Table 1 provides a breakdown of the types of ESS agreements in place, and the prevalence of ESS in both the 5km and 25km PWNT corridors. Figure 3 illustrates the spatial distribution of ESS agreements within the PWNT corridors.
 
-### Twitter data
-The Twitter data for this research was acquired through a tweet-harvesting project conducted at the University of Leeds (Lovelace, 2014). The dataset was provided in the form of a comma separated file with each row of the file representing a single instance of a tweet. As well as the actual text of the tweet (TweetText), the dataset also included metadata about each tweet; a unique id (TweetID), the date the tweet was created (DateCreated), the time the tweet was created (TimeCreated), the number of followers of the sender (tweeter), (n followers), the number other tweeters the tweeter was following (n following), the number of tweets tweeted by the user (n tweets), and user’s location (user_location). The user’s location refers to their self-disclosed location extracted from their twitter profile not the origin of a specific tweet. The location from which the tweet originated was provided by the geotag fields in the dataset; longitude and latitude. Every tweet in the dataset included this geocoded information, which represents approximately 1-3% of all tweets (Morstatter et al., 2013; Broniatowski et al., 2013; Hecht and Stephens, 2014). The Twitter dataset represented 52 days of data collection between 2014-06-03 and 2014-07-25 inclusive and contained a total of 60,466 geotagged tweets and their associated metadata. Figure 4 illustrates the spatial distribution of the tweets within the Twitter dataset.
+### Twitter data. 
+The Twitter data for this research was acquired through a tweet-harvesting project conducted at the University of Leeds (Lovelace, 2014). The dataset was provided in the form of a comma separated file with each row of the file representing a single instance of a tweet. Aside from the text of the tweet (TweetText), the dataset also included additional metadata about each tweet;
+
+  - a unique id (TweetID)
+  - date the tweet was created (DateCreated), 
+  - time the tweet was created (TimeCreated). 
+  - the number of followers of the sender (n_followers), 
+  - the number of others the sender follows (n_following), 
+  - the total number of tweets sent by the sender (n_tweets), 
+  - the sender’s location (user_location). This refers to the sender’s self-disclosed location from their profile, not the user’s location at the time of sending the tweet.
+  - The location from which the tweet originated was provided by the geotag fields in the dataset; longitude and latitude. Every tweet in the dataset included this geocoded information, which represents approximately 1-3% of all tweets (Morstatter et al., 2013; Broniatowski et al., 2013; Hecht and Stephens, 2014).
+
+The Twitter dataset represented 52 days of data collection between 2014-06-03 and 2014-07-25 inclusive and contained a total of 60,466 geotagged tweets and their associated metadata. Figure 4 illustrates the spatial distribution of the tweets within the Twitter dataset.
 
 ### Digital Elevation Data
 Shuttle Radar Thematic Mapper (SRTM) data (Pope, 2009) was used as the digital elevation model (DEM) in this research. The SRTM data is a raster dataset with a 90m resolution. Whilst this represents a low resolution product compared to other digital elevation datasets which are available, the 90m product is free and readily available for download. Furthermore, since this work represents an exploratory analysis, the 90m resolution data was chosen as it would allow for quicker processing, and could be exchanged for higher resolution data in subsequent research. Figure 5 is the DEM of the 25km PWNT corridor.
 
-### Land Cover
+### Land Cover Data
 The 2007 Land Cover Map (LCM) (Morton et al., 2011) was used to identify land cover within the study region. The 2007 LCM provides land cover information for the United Kingdom, derived from satellite images and digital cartography. The raster version of the LCM has a 25m spatial resolution, with the value of each pixel representing the most likely broad habitat from 23 classes of broad habitat. Figure 6 shows the spatial distribution of Land cover classes within the 25km PWNT corridor. Table 2 provides a list of the land cover classes and their extent within the 25km PWNT corridor.
-
 
 # Methods
 
-## Tweet Selection
-Spatial and lexical selection was conducted to select only Tweets that originated from within the 5km PWNT corridor and whose TweetText contained workds relavent to trail use. These tweets would be subject to further analysis. Using R (R Development Core Team, 2008), the Twitter dataset was spatially clipped to the 5km PWNT corridor. Tweets originating outside the 5km PWNT corridor were discarded. Lexical selection involved searching the TweetText, using case-insensitive regular expression terms, for terms relavent to trail use. Trail and error was used to ascertain the search terms that returned relevant results. Table 3 is a list of the search terms that were used in the final selection. Since some tweets contained multiple search terms the dataset was searched and purged of duplicated tweets so they would not be processed multiple times introduce bias into the results.
-Additional data ‘cleaning’ was necessary to remove tweets which, although originated from within the geographical scope of the project, and contained relevant search terms, were not relevant to the project. These included traffic reports, other clearly broadcasted messages, and direct (Twitter-user to Twitter-user) messages. Direct messages are tweets sent to a specific user that are also broadcast. Direct messages are identifiable by their specific format @username.
+In order to extract the sentiment conveyed within trail users’ tweets and determine the effectiveness of ESS agreements required a multi-stage process. An overview of the steps is provided below, with more detailed description following:
+
+- Spatial selection of tweets based on proximity to PWNT
+- Lexical selection of tweets using natural language processing
+- Data preparation (removing duplicate tweets, spurious characters)
+- Input of tweets’ spatial data imported into GIS
+- Sentiment Analysis of TweetText using SentiStrength
+- Sentiment analysis output combined with tweet’s spatial data
+- Viewshed analyses conducted for each overall positive and overall negative tweet. Viewshed analyses included:
+  -	Calculation of the viewshed
+  -	Determination of majority land cover class within the viewshed
+  -	Determination of the ruggedness within the viewshed
+  -	Determination of the presence of ESS agreements within the viewshed.
+  
+## Spatial selection of tweets
+Only tweets whose origin was within the 5km PWNT corridor were included in further analysis. Using R (R Development Core Team, 2008), the Twitter dataset was spatially clipped to the 5km PWNT corridor.
+
+## Lexical selection of tweets
+Identification of tweets relevant to PWNT use was done through lexical selection. Lexical selection involved searching the TweetText of each tweet using case-insensitive regular expression terms. An approach of trial and error was used to ascertain the search terms that returned relevant results. Table 3 is a list of the 20 search terms that were used in the final selection.
+
+The results for each of the selections were combined into a single dataset. Since some tweets contained multiple search terms, for example “Hiking Malham Cove on the Pennine Way” the dataset was searched and purged of duplicated tweets so they would not be processed further and introduce bias into the results.
+
+Additional data ‘cleaning’ was necessary to remove tweets which, although originated from within the geographical scope of the project, and contained relevant search terms, were not relevant to the project. These included traffic reports, other clearly broadcasted messages, and direct (Twitter-user to Twitter-user) messages. Direct messages are broadcasted tweets sent between specific users, generally in reply to one another, and are identifiable as they include an '@username'.
+
+## TweetText processing
+The tweet selection process and data ‘cleaning’ resulted in 161 individual tweets, herein referred to as 'trail users tweets'.
+The trail users' tweets were those deemed relevant to the project and would be subject to sentiment analysis. As previously described, SentiStrength selected as the sentiment analysis tool because it is designed for the sentiment analysis of short, informal text that may include abbreviations and slang (Thelwall et al., 2011). Prior to SA some additional processing was required to prepare the data. Although SentiStength includes an emoticon list with emoticon polarities to identify the sentiment of emoticons (Thelwall et al., 2012), it is not able to interpret emoji, which are unicode characters used to coney sentiment (Unicode Inc, 2012). A visual analysis of the trail users' tweets revealed that several tweets contained Unicode character combinations. These Unicode symbol combinations were referenced using online tools (Emojipedia, 2015) to find the meaning. The Unicode was then replaced with the text-equivalent sentiment of the emoji so as to preserve the sentiment conveyed. Finally, spurious characters and excessive whitespace, which may have been initially present or introduced by the processing, were removed.
+## Sentiment Analysis
+SentiStrength accepts tab-delimited text files as input. A tab-delimited text file of the TweetID and TweetText of the processed 161 trail users’ tweets were input. SentiStrength produced a tab-delimited text file with positive (+1 to +5) and negative (-1 to -5) sentiment scores appended to the end of each tweet. This score is the sentiment conveyed within each tweet. A score of +1 or -1 respectively denotes that positive or negative sentiment was not detected. Therefore a tweet with a +1 and -1 score would be treated as neutral (no sentiment conveyed). Although sentiment strength was provided it would not be used here. Rather just the presence of positive, negative, or neutral sentiment was of interest. The sum of the positive sentiment conveyed and negative sentiment conveyed scores was equal to the overall sentiment of the tweet. A positive score denoted positive sentiment and a negative score denoted negative sentiment. A score of 0 denoted no sentiment (neutral) 
+
+SentiStrength also provided a duplicate of the TweetText field showing the sentiment score of each individual word. It was noted that two locations on the PWNT; ‘Cross Fell’ and ‘High Force’ were returning negative sentiment scores. This is an example of domain specificity (Thelwall et al., 2012; Thelwall et al., 2011). To override this, both ‘Cross Fell’ and ‘High force’ were added into the idiom list within SentiStrength and given a sentiment score of 0 (no sentiment). The sentiment analysis was conducted a second time after these changes.
+
+The sentiment analysis output was added to ArcMap 10 (ESRI, 2011) and joined by TweetID to the shapefile of tweets for further analysis.
+
+## Viewshed Analyses
+Viewshed analysis describes the computational process of predicting the total area that is visible from a point in space (Kim et al., 2004). Viewshed analysis has a variety of application include, for example, planning the locations of communication towers (De Floriani et al., 1994) and wind turbines (Kinder & Sparkes, 1999), and to identify the impacts of human features on wilderness character in the National Parks of the United States (Tricker et al., 2012; Tricker et al., 2013).
+
+In this study we used viewshed analysis to determine the visible areas from each of the overall positive, and overall negative tweet locations. Previous research has found that the appeal of National Trails lies within the quality of the scenery and the landscape (Wood-Gee, 2008). Therefore, the purpose of the viewshed analyses is to establish the experiential qualities of the landscape within the viewshed of the sentiment-bearing tweet locations, and to ascertain whether certain characteristics within the viewshed are consistent with a tweet conveying positive or negative sentiment. 
+
+Attributes which characterise wildness qualities have been established in previous studies (e.g. Lesslie et al., 1993; Carver, 1996; Carver et al., 2008). Based upon these works two land attributes were identified as being appropriate for this research; the land cover, and the rugged and challenging nature of the terrain (Carver et al., 2008). In addition the extent of the viewshed and the extent and type of ESS agreements within the viewshed, were also of interest.
+
+Viewshed analyses were conducted using The Observation Point Tool in ArcMap 10 (ESRI, 2011). The Observation Point Tool allows for the maximum viewshed distance to be set for each point in the dataset. This parameter, RADIUS2, was set to 20km meaning that the viewshed would only be considered within this distance. This distance was consistent with previous work (Natural England, 2013c), and necessary because viewshed analysis is a computer intensive process and defining the maximum distance would benefit the processing time. The SRTM digital elevation data (Pope, 2009) was the other input required for the viewshed analysis and was clipped to the 25km PWNT corridor. This was to ensure that each tweet in the dataset could reach the potential viewshed of 20km without this falling outside of the data required for calculation (as the maximum a tweet could be from the PWNT was 5km).
+
+The Observation Point Tool in ArcMap 10 (ESRI, 2011) allows for a maximum of 16 points to be analysed at one time, and the output can be used to determine which cells are visible from each point. For this study, however, the viewshed for each tweet was calculated independently using the ModelBuilder facility within ArcMap 10 (ESRI, 2011). The model iterated through each of the overall positive and overall negative tweets and calculated the viewshed. Using this approach the output of the Observation Point Tool for each point is a binary raster dataset which is at the same spatial resolution of the input digital elevation data (90m). This dataset signifies whether a particular cell is either visible (1) or not visible (0) from the point analysed. The percentage of visibility was calculated from the output raster based upon the number of raster cells classed as visible and the total number of cells within the >20km radius of the point. 
+
+To facilitate the further viewshed analyses an input mask was derived from the viewshed results of each point. This involved using the Raster Calculator (ESRI, 2011) to convert the non-visible cells from ‘0’ to ‘NoData’ so that they could be ignored in further calculations. This viewshed input mask would be used to in further analyses to determine the land cover, ruggedness, and ESS agreements within the viewshed of each tweet. 
+
+### Land Cover within viewshed
+The 2007 LCM (Morton et al., 2011) was also spatially clipped to within 25km of the PWNT to accommodate the 20km viewshed of each of the trail users’ tweets. The viewshed input masks and LCM (Morton et al., 2011) were combined using the Raster Calculator (ESRI, 2011) to determine the majority land cover class within each tweet’s viewshed. This was achieved my multiplying the viewshed input mask by the LCM (Morton et al., 2011). The result of this was the categorical land class(es) within the viewshed, and ‘NoData’ values for areas outside the viewshed. The majority statistic for each output was then calculated. This process was automated through use of ModelBuilder (ESRI, 2011) to iterate through each of the viewshed input mask datasets.
+
+### Ruggedness within viewshed
+Striking topographic features and challenging terrain are viewed as qualities of wild land (Carver, 2008). To quantify this a Ruggedness Index was devised. Ruggedness was derived from the SRTM DEM (Pope, 2009). Based upon a comparison of methods for calculating the ruggedness of landscape conducted by Cooley (Unkown), and work by Ascione et al. (2008), the standard deviation of elevation was chosen as a proxy for the ruggedness of the landscape. 
+
+The standard deviation of the DEM was calculated using the Focal Statistics tool within ArcMap (ESRI, 2011). This calculated the standard deviation of the DEM within a 3 * 3 cell raster window (equivalent to 270m on the ground). This moving window passed over the 25km PWNT DEM. 
+
+The resulting output was a raster dataset with float (decimal) values for each cell. This output was reclassified into equally divided quintiles, thus providing relative ruggedness across the 25km PWNT corridor study area. The values where then standardised to a scale of between +1 and +5. This provided the Ruggedness Index.
+
+The ruggedness for the viewshed of each overall positive and overall negative tweet was calculated through use of the Raster Calculator (ESRI, 2011). Firstly, the viewshed input masks and ruggedness dataset were used to calculate the Roughness Index within the viewsheds (areas outside the viewshed were assigned ‘NoData’). Secondly, the mean roughness of each viewshed was calculated to provide an average measure of ruggedness within the viewshed.
+
+### ESS agreements within viewshed
+To determine the extent of ESS agreements within each viewshed, the 25km ESS agreement shapefile was first converted into a raster dataset. The cell size was set to 25m, which was consistent with the LCM (Morton et al., 2011). A smaller cell size was chosen to limit the loss of detail caused when transitioning from a vector to raster format that may affect the boundaries between agreements. 
+
+In Raster Calculator, the ESS agreement raster was multiplied by the viewshed input mask. The extent of each ESS agreement type (ELS, HLS etc) was then calculated as a percentage of the total viewshed for each of the overall positive and overall negative tweets.
 
 
-* Spatial selection
-    - in R the Twitter dataset was reduced to only the tweets which originated from within the PWNT 5km corridor
-* Lexical selection 
-    - in R the tweets relevant to hiking the PWNT were selected using natural language processing
-* The text of each tweet was processed and ‘cleaned’ of spurious characters
-* Each tweet and its spatial information was imported into ArcMap 10 (ESRI, 2011)
-* The TweetText and TweetID were input into SentiStrength for sentiment analysis
-* Sentiment analysis outputs were combined with tweet spatial information in ArcMap 10/QGIS
-* Viewshed analyses were conducted for each overall positive and overall negative
-tweet. Viewshed analyses were conducted in ArcMap 10 (ESRI, 2011) and included:
-    - Calculation of the viewshed
-    - Determination of majority land cover class within the viewshed
-    - Determination of the ruggedness within the viewshed
-    - Determination of the presence of ESS agreements within the viewshed.
+
 
 # Results
 
