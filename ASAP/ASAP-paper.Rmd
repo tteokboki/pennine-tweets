@@ -24,7 +24,17 @@ lapply(pkgs, library, character.only = T)
 
 
 
-**Abstract** The analysis of large data sets, often referred to as big data, is increasingly being performed in research and the development of policy. Big data has the potential to provide new and innovative insights to existing problems, and to reveal trends and interactions that were not previously considered. This paper presents a big data analysis approach in an effort to determine the effectiveness of the Environmental Stewardship Scheme (ESS) agreements in place along the Pennine Way National Trail. We present a method to extract the sentiment conveyed in trail users' public Twitter messages (tweets) in order to assess to what extent ESS agreements maintain landscape character within the trail corridor. With this knowledge we provide recommendations regarding the feasibility of using social media big data as a source of trail user feedback that could be of utility to Natural England, the executive non-departmental public body of the UK Government charged with the management of both England's National Trail System and Environmental Stewardship Scheme.
+**Abstract**
+
+Large and unofficial data sets, often referred to as 'big data', are increasingly being used in geographical research and explored as a decision support tool for policy development.
+Big data has the potential to provide new insight into phenomena about which there is little information from conventional sources.
+Within this context, the present paper explores the potential of a large social media dataset to evaluate the perceptions of visitors to the Pennine Way Trail, which is protected by the UK's Environmental Stewardship Scheme (ESS).
+The method analyses sentiment in trail users' public Twitter messages (tweets) with the aim of assessing the extent to which the ESS maintains landscape character within the trail corridor.
+The method demonstrates the importance of filtering big data to convert the data into useful information.
+After filtering, the results are based on 96 messages directly related to the trail.
+Although small, this sample illustrates the potential for social media to be used as cheap and increasingly abundant source of information.
+We suggest that big data in this context should be seen as a resource that can complement, rather than replace, conventional sources such as questionnaires and interviews.
+Furthermore, we provide guidance on how social media could be effectively used by conservation bodies, such as Natural England, which are charged with the management of areas of environmental value worldwide.
 
 
 **Keywords** big data analysis &#8226; sentiment analysis &#8226; Environmental Stewardship Scheme &#8226; Volunteered Geographic Information &#8226; National Trails &#8226; social media
@@ -32,26 +42,40 @@ lapply(pkgs, library, character.only = T)
 
 # Introduction
 
-The Environmental Stewardship Scheme (ESS) is the current working implementation of agri-environmental scheme (AES) in England. AES are a mechanism that integrates environmental concerns into the European Commission’s Common Agricultural Policy. ESS provides government-financed payments to farmers and land managers in return for a commitment to farming their land with more care for the environment (Smith et al., 2013). Introduced during 2005 and 2006, ESS is a multi-objective scheme with 5 primary objectives: Conservation of wildlife and their habitats; the maintenance and enhancement of landscape quality and character; the protection of the historic environment; the protection of soils and reduction of water pollution; and provision of opportunities for people to visit and learn about the countryside (Natural England, 2011). ESS was established as a ‘broad and shallow’ approach to AES in order to extend its reach to high proportions of the countryside (Amy et al., 2013). As such it is non-competitive and, at some level, open to all farmers and land managers whose land is part of the farmed environment, and is registered in the Rural Land Register (Natural England, 2013b). ESS represents the country’s most widespread approach to environmental management with agreements in place on over 70% of land in the country (Defra, 2013). 
+The Environmental Stewardship Scheme (ESS) is the current working implementation of agri-environmental scheme (AES) in England.
+The AES is a mechanism that integrates environmental concerns into the European Commission’s Common Agricultural Policy (CAP).
+ESS provides government-financed payments to farmers and land managers in return for a commitment to farming their land with more care for the environment (Smith et al., 2013).
+Introduced during 2005 and 2006, ESS has 5 primary objectives: Conservation of wildlife and their habitats; the maintenance and enhancement of landscape quality and character; the protection of the historic environment; the protection of soils and reduction of water pollution; and provision of opportunities for people to visit and learn about the countryside (Natural England, 2011). ESS was established as a ‘broad and shallow’ approach to AES in order to extend its reach to high proportions of the countryside (Amy et al., 2013). As such it is non-competitive and, at some level, open to all farmers and land managers whose land is part of the farmed environment, and is registered in the Rural Land Register (Natural England, 2013b). ESS represents the country’s most widespread approach to environmental management with agreements in place on over 70% of land in the country (Defra, 2013). 
 
-England's most stunning and diverse landscapes are connected by the country's National Trail system which comprises of 15 designated National Trails, a total network length of more than 4000km. National Trails aim to provide greater access to the English countryside (Long Distance Walkers Association, 2014), rewarding natural adventures, and the opportunity for people to be inspired by varied scenery and landscapes (Wood-Gee, 2008).  
+England's most stunning and diverse landscapes are connected by the country's National Trail system which comprises of 15 designated National Trails, with a total network length of more than 4000 km.
+National Trails aim to provide greater access to the English countryside (Long Distance Walkers Association, 2014), rewarding natural adventures, and the opportunity for people to be inspired by varied scenery and landscapes (Wood-Gee, 2008).  
 
 ___
 Tom Wilson: [gy10tlw@leeds.ac.uk](mailto:gy10tlw@leeds.ac.uk)
 
 ^1^ School of Geography, University of Leeds, Leeds, United Kingdom
 
-In 2012 approximately 12 million visits were made to England’s National Trails (Ramblers, 2012). ESS agreements in place within a National Trail corridor therefore play an important role in providing a positive experience and, as previously identified, the maintenence and enhancement of landscape quality and character is one of the primary objectives of ESS.
+In 2012 approximately 12 million visits were made to England’s National Trails (Ramblers, 2012).
+The maintenence and enhancement of landscape quality and character is one of the primary objectives of ESS, and evidence suggest that the ESS improves biodiversity.
+Based on these observations, one could assume that the ESS can play an important role in providing a positive experience for visitors to National Trails.
 
-Despite the abundant interactions that National Trail users have with England’s landscapes, and inherently with land managed under ESS, there is currently no method to specifically obtain their opinions regarding the effectiveness of ESS in the maintenance and enhancement of the landscape quality and character. The opinions of trail users are in fact limited to broad, large-scale qualitative surveys of general visits to the countryside, such as the Monitor of Engagement with the Natural Environment (MENE). The MENE examines the adult population’s engagement with the natural environment (Natural England, 2015a). Previous National Trail User Surveys (The Countryside Agency, 2005; Natural England/Countryside Council for Wales, 2007) have not been conducted since 2007.
 
-This research seeks to address this discontinuity in knowledge by exploring the feasibility of utilising the sentiment conveyed within trail users’ public Twitter messages (tweets) to assess the effectiveness of ESS agreements in place within the trail corridor. Currently, the effectiveness of ESS tends to be measured in terms of the delivery of environmental benefits and the overall nationwide penetration of the scheme. We aim to devise a process to extract the sentiment conveyed within trail users’ tweets and perform an exploratory analysis to determine whether this information can be used to assess ESS. The findings of this exploratory analysis will form the basis of recommendations to Natural England regarding the feasibility of utilising social media data as a method of eliciting trail users’ opinions of ESS and the National Trail System. The objectives of this research are to:
+Despite the abundant interactions that National Trail users have with England’s landscapes, and inherently with land managed under ESS, there is currently no method to elicit their opinions regarding the effectiveness of ESS in the maintenance and enhancement of the landscape quality and character.
+The opinions of trail users are generally limited to broad, large-scale qualitative surveys, such as the Monitor of Engagement with the Natural Environment (MENE).
+MENE examines the adult population’s engagement with the natural environment (Natural England, 2015a). Previous National Trail User Surveys (The Countryside Agency, 2005; Natural England/Countryside Council for Wales, 2007) have not been conducted since 2007, providing a strong incentive to obtain trail user's opinions using alternative sources.
+
+This research seeks to address this discontinuity in knowledge by exploring the feasibility of utilising the sentiment conveyed within trail users’ public Twitter messages (tweets) to assess the effectiveness of ESS agreements within the corridor surrounding National Trails.
+Currently, the effectiveness of ESS tends to be measured in terms of the delivery of environmental benefits and the overall nationwide penetration of the scheme.
+We aim to devise a process to extract the sentiment conveyed within trail users’ tweets and perform an exploratory analysis to determine whether this information can be used to assess ESS.
+The findings of this exploratory analysis will form the basis of recommendations to Natural England regarding the feasibility of utilising social media data as a method of eliciting trail users’ opinions of ESS and the National Trail System.
+Based on this evolving policy and research context the objectives of this research are to:
 
 *  Develop a process to select tweets that are relavent to the scope of this study from a larger Twitter dataset, and extraction of the sentiment conveyed;
 *  Conduct spatial analyses of the geographic origins of the tweets, and their viewsheds, to identify patterns in the data;
 *  Provide policy recommendations regarding the feasibility of using social media data as a source or trail user feedback.
 
-This pilot study will focus on a specific National Trail, The Pennine Way National Trail (PWNT). The PWNT travels 431 km (268 miles) along the central upland spine of England connecting the English Midlands to the Scottish Borders (Walk Unlimited, 2014; Long Distance Walkers Association, 2014). The PWNT opened on 24th April 1965 after a 30 year campaign to provide greater access to the English countryside (Long Distance Walkers Association, 2014) and was the first step toward the development of the National Trail system. Along its route the PWNT passes through expanses of land managed under the ESS: 74.08% of the land within 5km of the PWNT is managed under ESS. Based upon trail-counter data collected between 2004 and 2014, an average of approximately 300,000 people visit the PWNT annually (Natural England, 2014f).
+This study focuses on a specific National Trail, The Pennine Way National Trail (PWNT).
+The PWNT travels 431 km (268 miles) along the central upland spine of England connecting the English Midlands to the Scottish Borders (Walk Unlimited, 2014; Long Distance Walkers Association, 2014). The PWNT opened on 24th April 1965 after a 30 year campaign to provide greater access to the English countryside (Long Distance Walkers Association, 2014) and was the first step toward the development of the National Trail system. Along its route the PWNT passes through expanses of land managed under the ESS: 74.08% of the land within 5km of the PWNT is managed under ESS. Based on trail-counter data collected between 2004 and 2014, an average of approximately 300,000 people visit the PWNT annually (Natural England, 2014f).
   
 # Background
 
