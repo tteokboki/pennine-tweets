@@ -307,7 +307,7 @@ A multi stage process was used to extract the sentiment conveyed within trail us
   
 ## Spatial and Lexical selection of tweets
 The Twitter dataset was spatially clipped to the 5&nbsp;km PWNT corridor so as only to include tweets that originated within 5&nbsp;km of the PWNT.
-Identification of tweets relevant to PWNT use was done through lexical selection. 
+The identification of tweets relevant to PWNT use was then completed through lexical selection. 
 Lexical selection involved searching the TweetText of each tweet using case-insensitive regular expression terms. 
 An approach of trial and error was used to ascertain the search terms that returned relevant results. 
 Table XXXX is a list of the 20 search terms that were used in the final selection.
@@ -315,13 +315,13 @@ Table XXXX is a list of the 20 search terms that were used in the final selectio
 The results for each of the selections were combined into a single dataset. 
 Since some tweets contained multiple search terms the dataset was searched and purged of duplicate tweets to prevent introduction of bias into the results.
 
-Some tweets originated from within the 5&nbsp;km PWNT corridor, and contained relavent search terms, but were not relavent to PWNT use. These included traffic reports, broadcasted informational messages, and direct (Twitter-user to Twitter-user) messages. 
+Some tweets originated from within the 5&nbsp;km PWNT corridor, and contained relavent search terms, but were not relevant to PWNT use. These included traffic reports, broadcasted informational messages, and direct (Twitter-user to Twitter-user) messages. 
 Direct messages are broadcasted tweets sent between specific users, generally in reply to one another, and are identifiable as they include an '@username'. These tweets were manually removed and not subject to further analysis.
 
 ## TweetText processing
 The tweet selection process resulted in 161 individual tweets, herein referred to as *trail users' tweets*.
 The trail users' tweets were those deemed relevant to the project and would be subject to sentiment analysis using SentiStrength.
-Prior to SA some additional processing was required to prepare the data. Although SentiStength includes an emoticon list with emoticon polarities to identify the sentiment of emoticons (Thelwall et al., 2012), it is not able to interpret emoji, which are unicode characters used to coney sentiment (Unicode Inc, 2012). 
+Prior to SA some additional processing was required to prepare the data. Although SentiStength includes an emoticon list with emoticon polarities to identify the sentiment of emoticons (Thelwall *et al*., 2012), it is not able to interpret emoji, which are unicode characters used to convey sentiment (Unicode Inc, 2012). 
 A visual analysis of the trail users' tweets revealed that several tweets contained Unicode character combinations. 
 These Unicode symbol combinations were referenced using online tools (Emojipedia, 2015) to find the meaning. 
 The Unicode was then replaced with the text-equivalent sentiment of the emoji so as to preserve the sentiment conveyed. 
@@ -358,7 +358,7 @@ In addition, the extent of the viewshed -- the level of visibility from a tweet 
 Viewshed analyses were conducted using The Observation Point Tool in ArcMap 10 (ESRI, 2011). 
 The Observation Point Tool allows for the maximum viewshed distance to be set for each point in the dataset. 
 This parameter, RADIUS2, was set to 20&nbsp;km meaning that the viewshed would only be considered within this distance. 
-This distance was consistent with previous work (Natural England, 2013c), and necessary because defining the maximum distance would benefit the time taken to process the viewshed, which is a computer intensive process.
+This distance was consistent with previous work (Natural England, 2013c), and necessary because defining the maximum distance would benefit the time taken to process the viewshed, which is a computationally intensive process.
 
 ### Viewshed Calculation
 We used ModelBuilder within ArcMap 10 (ESRI, 2011) to calculate the viewshed of each tweet.
@@ -408,6 +408,7 @@ Figure XXXX illustrates the daily frequency of tweets sent for the study period.
 The maximum number of daily tweets sent was 17 (2014-06-27), the minimum was 1, and the mean 3.  
 Based upon trail use data for the PWNT it is estimated that there were 63,247 visitors to the PWNT during the 42 day study period (Natural England, 2014f). 
 The trail users' tweets are approximately a 0.25% sample of total trail users for the period.
+<!-- you have data on the number of trail users? -->
 
 21 tweets (13.04%) contained one or more hashtags. In total there were 244 hashtags within the trail users' tweets. 
 132 tweets (81.99%) contained a URL to an external source or photo. 
@@ -421,6 +422,8 @@ Figure XXXX shows the locations of the trail users' tweets. Since the selection 
 SA revealed that 40 tweets were positive overall, 13 negative overall, and 105 contained no sentiment and were classified as neutral.
 
 Table XXXX provides a summary of the origin of trail users' tweets, and whether this was from ELS, ELS and HLS, or non-ESS land. As previously mentioned, the majority of tweets originated from land not under an ESS agreement. Tweet origin alone does not offer much insight into the effectiveness of ESS agreements. 
+
+XXXX- Chi squared or regession here AJE
 
 Further investigation of the 105 neutral tweets revealed that 94 (89.52%) contained a URL within the TweetText. 
 This is proportionally higher than in the trail users’ tweets before sentiment analysis (81.99%), and the Twitter data before processing (16.18%). 
@@ -437,28 +440,34 @@ Table XXXX summarises the viewshed analyses results each of the overall positive
 A one-way between subjects ANOVA was conducted to compare the effect of each of the viewshed analyses (percentage visibility within viewshed, percentage of majority landcover within viewshed, ruggedness within viewshed, and percentage of ESS agreements within viewshed) on tweet sentiment.
 For each of the viewshed attributes the test was run on values above or equal to the mean, and values below mean.
 
-There was not a significant effect of percentage visibility on trail user sentiment at the p<.10 level for the three conditions [F(1, 51) = 1.56, p = 0.22].
+<!-- I've changed these to "significant link" rather than "effect" as the latter seems to imply causation, rather than correlation; could use "correlation between" instead if you felt that was appropriate -->
+There was not a significant link between percentage visibility and trail user sentiment at the p<.10 level for the three conditions [F(1, 51) = 1.56, p = 0.22].
 
-There was not a significant effect of percentage majority landcover on trail user sentiment at the p<.10 level for the three conditions [F(1, 51) = 0.64, p = 0.43]. 
+There was not a significant link between percentage majority landcover and trail user sentiment at the p<.10 level for the three conditions [F(1, 51) = 0.64, p = 0.43]. 
 
-There was not a significant effect of ruggedness on trail user sentiment at the p<.10 level for the three conditions [F(1, 51) = 2.34, p = 0.13]. However, this result does imply that ruggedness within the viewshed does have a potential impact on trail user sentiment. 
+There was not a significant link between ruggedness and trail user sentiment at the p<.10 level for the three conditions [F(1, 51) = 2.34, p = 0.13]. However, this result does imply that ruggedness within the viewshed *might* be shown to have a potential impact on trail user sentiment if more data was collected and the test strengthened. 
+<!-- Does the change above make sense? In general I'd avoid just saying "there's no significance, but we're going to mention the relationship anyhow" as a reviewer will just come back with "no significance, no relationship" -- I've tried to contextualise it as exploratory -->
+<!-- Also, not sure where the reader gets that this is a negative relationship, as outlined in the discussion, maybe because I can't see the figures? -->
 
-There was a significant effect of percentage of ESS agreements within the viewshed on trail user sentiment at the p<.10 level for the three conditions [F(1, 51) = 4.15, p = 0.05]. This result suggests that the proportion of ESS agreements in place within the viewshed does have an impact on trail user sentiment.
+There was a significant relationship between percentage of ESS agreements within the viewshed and trail user sentiment at the p<.10 level for the three conditions [F(1, 51) = 4.15, p = 0.05]. This result suggests that the proportion of ESS agreements in place within the viewshed is related to trail user sentiment.
+<!-- Again, taken out the causality -- see discussion -->
 
 # Discussion
-As an exploratory analysis this paper has demonstrated a process to select tweets that are relavent to the scope of the study from a larger Twitter dataset, and extracted the sentiment conveyed by trail users.
+As an exploratory analysis this paper has demonstrated a process to select tweets that are relevant to the scope of the study from a larger Twitter dataset, and extracted the sentiment conveyed by trail users.
 
-Neverthless, after the tweet selection process only 161 tweets remained that could be subject to spatial and viewshed analyses.
-The origin of a majority of these tweets was from land not managed under ESS.
-The viewshed analyses do imply possible impact on trail user sentiment, and therefore warrant further study. The ruggedness, for example, does show that it is more likely for trail user sentiment to be positive when the land is less rugged.
-This is contrary with previous studies that found ruggedness of the landscape signifies the wild character and challenging nature of the terrain, which is generally valued (Carver et al., 2008).
-However, the ruggedness measure provided in this research represented the mean value across the viewshed, and such a summary would have led to a loss of detail.
+<!-- minor additions below; have taken out some of the causality -->
+After the tweet selection process only 161 tweets remained that could be subject to spatial and viewshed analyses. This reflects the short collection period (XXXX months) <!-- Tom -->; nevertheless, even this dataset has provided practical results, and gives confidence that a longer study in conjunction with the organisations involved would yield further insights. 
+The origin of a majority of these tweets was from land not managed under ESS, yet use of the viewshed as the unit of analysis allows reflection on the ESS management process.
+The viewshed analyses do imply possible impact on trail user sentiment, and therefore warrant further study. The trend between ruggedness and sentiment, while not significant demands additional investigation, not least because, if real, does appear to show that sentiment may be positive when the land is less rugged.
+This would be contrary to previous studies that found ruggedness of the landscape signifies the wild character and challenging nature of the terrain, which is generally valued (Carver *et al*., 2008).
+The weakness of the association (and the potentially subsequent negative relationship) may be because of the ruggedness metric used, which takes the mean value across the viewshed; however the situation is worth further investigation with a suite of alternative metrics. 
 
-Furthermore, the percentage of ESS agreements within the viewshed was shown to have an effect on trail user sentiment. Relatively high proportions of ESS within the viewshed (greater than the mean value) does tend to lead to more positive tweets.
+<!-- tried to separated out the causality in the below -->
+More significantly for this study, the percentage of ESS agreements within the viewshed was shown to have a relationship with trail user sentiment. Relatively high proportions of ESS agreements within the viewshed (greater than the mean value) correlate to more positive tweets. This may be because the management plans have had an active effect on the land preservation, or it may be because the allocation of ESS agreements has been passively biased to areas that demanded the preservation of well-loved aesthetic qualities. What is certain is that is viewsheds containing more areas not covered have lower satisfaction, and this should give the organisations involved some indication that the schemes are either actively working, or they have passively covered the right landscapes. As new agreements come into being, this methodology gives the opportunity for assessing the worth of plans from a combination of these two perspectives: an increase in satisfaction would indicate an active contribution by the scheme to landscape satisfaction, while a decrease would indicate that passive (or active) protection has not worked.
 
 Assessment of the neutral tweets revealed that a very high proportion, close to 90%, contain a URL, which could be a link to an image. 
-Work by Borth et al. (2010) found that tweets conveying the sentiment visually (through images) could be characterised by the short legnth of tweet text. 
-Although the Borth et al. (2010) study does not provide details of the sentiment of the short text, it does present an interesting avenue for further research of trail users’ tweeted images. 
+Work by Borth *et al*. (2010) found that tweets conveying the sentiment visually (through images) could be characterised by the short legnth of tweet text. 
+Although the Borth *et al*. (2010) study does not provide details of the sentiment of the short text, it does present an interesting avenue for further research of trail users’ tweeted images. 
 
 ##Issues with social media data
 There are several issues with the use of social media data that deserve attention. 
@@ -482,29 +491,34 @@ Although Twitter data may be classed as public data, consideration should certai
 Twitter users should understand that their data is public, unless they specify otherwise in their preferences. Even then, there is a chance that users do not realise the potential use of their social media interactions. 
 In the event that users know their data is public, it still can be the case that they do not intend for their data or tweet to become public (Eckert *et al*., 2013). 
 In consideration of this, the Twitter dataset in this study did not contain Twitter usernames or personal information, and no real tweets have been published in this report. 
-If a process as described in this paper is adopted as a method of obtaining the sentiment of trail users' we belive it would be necessary for the agencies involved to disclose the purpose of data collection.
+If a process as described in this paper is adopted as a method of obtaining the sentiment of trail users' we believe it would be necessary for the agencies involved to disclose the purpose of data collection.
 
-# Reccomnedations
 
-A process to select trail users’ tweets from a larger dataset of Twitter and extract the sentiment conveyed has been developed. 
-The exploratory analysis of the data used in this research did not provide conclusive results with regard to the effectiveness of the ESS, but it did uncover interesting insights which deserve further attention.
+<!-- think these are fine as conclusions -->
+# Conclusions and Recommendations
+
+<!-- adjusted for new results -->
+A process to select trail users’ tweets from a larger dataset of Twitter and extract the sentiment conveyed about geographical spaces has been developed. 
+The exploratory analysis presented has gone some way to providing an indication of the effectiveness of the ESS with regards landscape satisfaction, but the situation deserves further attention with an enhanced dataset.
 
 As previously mentioned, an interesting avenue of future research is to determine the extent of image-sharing in trail users’ tweets. 
 Furthermore, are tweeting trail users attempting to convey sentiment through these images? Borth *et al*. (2013) present research on visual sentiment ontology which could provide a foundation of future research in this area.
 
-Based upon the findings of this research it is recommended that Natural England proactively initiate a social media strategy as a method of eliciting the sentiment of its trail users from their social web data. 
-Natural England should select a hashtag with which it would like users to tag their tweets. 
-This research has uncovered that trail users already utilise hashtags within their tweets. 
+<!-- added a line on bias -->
+Based upon the findings of this research it is recommended that Natural England proactively initiate a social media strategy as a method of eliciting the sentiment of its trail users from their social web data. Provided the campaign does not focus on ESS agreements, the data elicited should be unbiased with regards the nature of the land protection.
+This research has uncovered that trail users already utilise hashtags within their tweets, and Natural England should select a hashtag with which it would like users to tag their tweets. 
 Assigning a hashtag specific to this campaign would facilitate the grouping and selection of tweets during data analysis. 
 Furthermore, the hashtag can form the basis of a promotional and educational campaign.
 
 A campaign would provide the opportunity to increase awareness of the use of social web data for representing views to the organisation. 
-This is important from both an ethical and representative perspective: Trail users should be alerted to the fact that the sentiment they convey and comments they make are public. In terms of representation, a greater number of people need to be encouraged to participate in this scheme for it to be anywhere close to representative. 
+This is important from both an ethical and representative perspective: Trail users should be alerted to the fact that the sentiment they convey and comments they make are public. In terms of representation, a greater number of people need to be encouraged to participate in this scheme for it to be made more representative. 
 However, alternative mechanisms will be additionally needed to ensure that trail user opinions are not subject to a digital divide whereby only those with a smart phone and a data plan are able to offer their opinion.
 
 Initiation of a social media campaign is also likely to increase the amount of data available for analyses such as those presented in this report, and allow for the process to be refined further.
 
-# Conclusions
+Finally, this paper presents a methodology that would be suitable for the analysis of any user sentiment where the management or planning of landuse within viewsheds is a key determinant. As such, it is hoped that it will be of use to communities as diverse as civic architects, policing organisations, transport planners, and national park managers.
+
+
 
 # References
 Compiled - will be added last.
